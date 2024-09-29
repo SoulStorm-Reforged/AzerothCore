@@ -1683,7 +1683,11 @@ CreatureModelInfo const* ObjectMgr::GetCreatureModelRandomGender(CreatureModel* 
     {
         uint32 displayid_temp = GetRealDisplayId(model->CreatureDisplayID);
         if (displayid_temp != model->CreatureDisplayID)
-            return GetCreatureModelRandomGender(model, creatureTemplate);
+        {
+            CreatureModel tempModel = *model;
+            tempModel.CreatureDisplayID = displayid_temp;
+            return GetCreatureModelRandomGender(&tempModel, creatureTemplate);
+        }
     }
 
     CreatureModelInfo const* modelInfo = GetCreatureModelInfo(model->CreatureDisplayID);
