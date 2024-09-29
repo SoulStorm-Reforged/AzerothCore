@@ -18,6 +18,7 @@
 #include "Common.h"
 #include "Item.h"
 #include "Log.h"
+#include "Map.h"
 #include "ObjectAccessor.h"
 #include "ObjectMgr.h"
 #include "Opcodes.h"
@@ -1029,6 +1030,12 @@ void WorldSession::HandleListInventoryOpcode(WorldPacket& recvData)
         return;
 
     LOG_DEBUG("network", "WORLD: Recvd CMSG_LIST_INVENTORY");
+
+#ifndef DISABLE_DRESSNPCS_CORESOUNDS
+    if (guid.IsAnyTypeCreature())
+        if (Creature* creature = _player->GetMap()->GetCreature(guid))
+            creature->SendMirrorSound(_player, 0);
+#endif
 
     SendListInventory(guid);
 }

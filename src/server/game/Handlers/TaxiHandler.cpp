@@ -16,6 +16,7 @@
  */
 
 #include "GameTime.h"
+#include "Map.h"
 #include "ObjectMgr.h"
 #include "Opcodes.h"
 #include "Player.h"
@@ -69,6 +70,12 @@ void WorldSession::HandleTaxiQueryAvailableNodes(WorldPacket& recvData)
         LOG_DEBUG("network", "WORLD: HandleTaxiQueryAvailableNodes - Unit ({}) not found or you can't interact with him.", guid.ToString());
         return;
     }
+
+#ifndef DISABLE_DRESSNPCS_CORESOUNDS
+    if (guid.IsAnyTypeCreature())
+        if (Creature* creature = _player->GetMap()->GetCreature(guid))
+            creature->SendMirrorSound(_player, 0);
+#endif
 
     // remove fake death
     if (GetPlayer()->HasUnitState(UNIT_STATE_DIED))

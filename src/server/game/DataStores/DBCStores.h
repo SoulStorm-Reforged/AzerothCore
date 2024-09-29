@@ -92,7 +92,16 @@ extern DBCStorage <ChrClassesEntry>              sChrClassesStore;
 extern DBCStorage <ChrRacesEntry>                sChrRacesStore;
 extern DBCStorage <CinematicCameraEntry>         sCinematicCameraStore;
 extern DBCStorage <CinematicSequencesEntry>      sCinematicSequencesStore;
-extern DBCStorage <CreatureDisplayInfoEntry>     sCreatureDisplayInfoStore;
+
+// extern DBCStorage <CreatureDisplayInfoEntry>     sCreatureDisplayInfoStore;
+extern DBCStorage <CreatureDisplayInfoEntry>     sCreatureDisplayInfoStoreRaw;
+struct AC_GAME_API CreatureDisplayInfoStore
+{
+    const CreatureDisplayInfoEntry * AssertEntry(uint32 id) const;
+    const CreatureDisplayInfoEntry * LookupEntry(uint32 id) const;
+};
+extern CreatureDisplayInfoStore                  sCreatureDisplayInfoStore;
+
 extern DBCStorage <CreatureDisplayInfoExtraEntry> sCreatureDisplayInfoExtraStore;
 extern DBCStorage <CreatureFamilyEntry>          sCreatureFamilyStore;
 extern DBCStorage <CreatureModelDataEntry>       sCreatureModelDataStore;
@@ -142,6 +151,7 @@ extern DBCStorage <MapEntry>                     sMapStore;
 //extern DBCStorage <MapDifficultyEntry>           sMapDifficultyStore; -- use GetMapDifficultyData insteed
 extern MapDifficultyMap                          sMapDifficultyMap;
 extern DBCStorage <MovieEntry>                   sMovieStore;
+extern DBCStorage <NPCSoundsEntry>               sNPCSoundsStore;
 extern DBCStorage <NamesReservedEntry>           sNamesReservedStore;
 extern DBCStorage <NamesProfanityEntry>          sNamesProfanityStore;
 extern DBCStorage <OverrideSpellDataEntry>       sOverrideSpellDataStore;

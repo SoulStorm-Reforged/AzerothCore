@@ -16,9 +16,11 @@
  */
 
 #include "BankPackets.h"
+#include "Creature.h"
 #include "DBCStores.h"
 #include "Item.h"
 #include "Log.h"
+#include "Map.h"
 #include "Opcodes.h"
 #include "Player.h"
 #include "WorldPacket.h"
@@ -44,6 +46,7 @@ bool WorldSession::CanUseBank(ObjectGuid bankerGUID) const
 
 void WorldSession::HandleBankerActivateOpcode(WorldPacket& recvData)
 {
+
     ObjectGuid guid;
 
     recvData >> guid;
@@ -54,6 +57,12 @@ void WorldSession::HandleBankerActivateOpcode(WorldPacket& recvData)
         LOG_DEBUG("network", "WORLD: HandleBankerActivateOpcode - Unit ({}) not found or you can not interact with him.", guid.ToString());
         return;
     }
+
+#ifndef DISABLE_DRESSNPCS_CORESOUNDS
+    if (guid.IsAnyTypeCreature())
+        if (Creature* creature = _player->GetMap()->GetCreature(guid))
+            creature->SendMirrorSound(_player, 0);
+#endif
 
     // remove fake death
     if (GetPlayer()->HasUnitState(UNIT_STATE_DIED))
