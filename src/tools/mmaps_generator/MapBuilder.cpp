@@ -107,7 +107,7 @@ namespace MMAP
 
         printf("Discovering maps... ");
         getDirContents(files, "maps");
-        for (auto & file : files)
+        for (auto& file : files)
         {
             mapID = uint32(atoi(file.substr(0, file.size() - 8).c_str()));
             if (std::find(m_tiles.begin(), m_tiles.end(), mapID) == m_tiles.end())
@@ -119,7 +119,7 @@ namespace MMAP
 
         files.clear();
         getDirContents(files, "vmaps", "*.vmtree");
-        for (auto & file : files)
+        for (auto& file : files)
         {
             mapID = uint32(atoi(file.substr(0, file.size() - 7).c_str()));
             if (std::find(m_tiles.begin(), m_tiles.end(), mapID) == m_tiles.end())
@@ -130,9 +130,16 @@ namespace MMAP
         }
         printf("found %u.\n", count);
 
+        printf("Tiles discovered, now checking... \n");
+        for (auto& m_tile : m_tiles)
+        {
+            printf("Map ID: %u, number of tiles: %zu\n", m_tile.m_mapId, m_tile.m_tiles->size());
+        }
+        printf("All tiles checked, proceeding to discovering tiles... \n");
+
         count = 0;
         printf("Discovering tiles... ");
-        for (auto & m_tile : m_tiles)
+        for (auto& m_tile : m_tiles)
         {
             std::set<uint32>* tiles = m_tile.m_tiles;
             mapID = m_tile.m_mapId;
@@ -140,7 +147,7 @@ namespace MMAP
             sprintf(filter, "%03u*.vmtile", mapID);
             files.clear();
             getDirContents(files, "vmaps", filter);
-            for (auto & file : files)
+            for (auto& file : files)
             {
                 fsize = file.size();
 
@@ -155,7 +162,7 @@ namespace MMAP
             sprintf(filter, "%03u*", mapID);
             files.clear();
             getDirContents(files, "maps", filter);
-            for (auto & file : files)
+            for (auto& file : files)
             {
                 fsize = file.size();
 
@@ -184,7 +191,7 @@ namespace MMAP
         printf("found %u.\n\n", count);
 
         // Calculate tiles to process in total
-        for (auto & m_tile : m_tiles)
+        for (auto& m_tile : m_tiles)
         {
             if (!shouldSkipMap(m_tile.m_mapId))
                 m_totalTiles += m_tile.m_tiles->size();
