@@ -277,6 +277,10 @@ add_library(modules STATIC
     ${SCRIPT_MODULE_PRIVATE_SCRIPTLOADER}
     ${PRIVATE_SOURCES_MODULES})
 
+if (MOD_ELUNA_FOUND)
+  target_link_libraries(modules PUBLIC lualib)
+endif()
+
 target_link_libraries(modules
   PRIVATE
     acore-core-interface
@@ -371,8 +375,7 @@ if (MOD_ELUNA_FOUND)
 
     add_custom_command(TARGET modules
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/bin/${MSVC_CONFIGURATION_NAME}lua_scripts/extensions/"
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${MOD_ELUNA_PATH}/LuaEngine/extensions" "${CMAKE_BINARY_DIR}/bin/${MSVC_CONFIGURATION_NAME}lua_scripts/extensions/")
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/bin/${MSVC_CONFIGURATION_NAME}lua_scripts/extensions/")
   endif()
 
   install(DIRECTORY "${MOD_ELUNA_PATH}/LuaEngine/extensions" DESTINATION "${CMAKE_INSTALL_PREFIX}/bin/lua_scripts/")
