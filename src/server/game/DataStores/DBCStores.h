@@ -92,15 +92,7 @@ extern DBCStorage <ChrClassesEntry>              sChrClassesStore;
 extern DBCStorage <ChrRacesEntry>                sChrRacesStore;
 extern DBCStorage <CinematicCameraEntry>         sCinematicCameraStore;
 extern DBCStorage <CinematicSequencesEntry>      sCinematicSequencesStore;
-
-// extern DBCStorage <CreatureDisplayInfoEntry>     sCreatureDisplayInfoStore;
-extern DBCStorage <CreatureDisplayInfoEntry>     sCreatureDisplayInfoStoreRaw;
-struct AC_GAME_API CreatureDisplayInfoStore
-{
-    const CreatureDisplayInfoEntry * AssertEntry(uint32 id) const;
-    const CreatureDisplayInfoEntry * LookupEntry(uint32 id) const;
-};
-extern CreatureDisplayInfoStore                  sCreatureDisplayInfoStore;
+extern DBCStorage <CreatureDisplayInfoEntry>     sCreatureDisplayInfoStore;
 
 extern DBCStorage <CreatureDisplayInfoExtraEntry> sCreatureDisplayInfoExtraStore;
 extern DBCStorage <CreatureFamilyEntry>          sCreatureFamilyStore;

@@ -55,12 +55,7 @@ DBCStorage <ChrClassesEntry> sChrClassesStore(ChrClassesEntryfmt);
 DBCStorage <ChrRacesEntry> sChrRacesStore(ChrRacesEntryfmt);
 DBCStorage <CinematicCameraEntry> sCinematicCameraStore(CinematicCameraEntryfmt);
 DBCStorage <CinematicSequencesEntry> sCinematicSequencesStore(CinematicSequencesEntryfmt);
-
-// DBCStorage <CreatureDisplayInfoEntry> sCreatureDisplayInfoStore(CreatureDisplayInfofmt);
-DBCStorage <CreatureDisplayInfoEntry> sCreatureDisplayInfoStoreRaw(CreatureDisplayInfofmt);
-CreatureDisplayInfoStore sCreatureDisplayInfoStore;
-const CreatureDisplayInfoEntry * CreatureDisplayInfoStore::AssertEntry(uint32 id) const { return sCreatureDisplayInfoStoreRaw.AssertEntry(sObjectMgr->GetRealDisplayId(id)); }
-const CreatureDisplayInfoEntry * CreatureDisplayInfoStore::LookupEntry(uint32 id) const { return sCreatureDisplayInfoStoreRaw.LookupEntry(sObjectMgr->GetRealDisplayId(id)); }
+DBCStorage <CreatureDisplayInfoEntry> sCreatureDisplayInfoStore(CreatureDisplayInfofmt);
 
 DBCStorage <CreatureDisplayInfoExtraEntry> sCreatureDisplayInfoExtraStore(CreatureDisplayInfoExtrafmt);
 DBCStorage <CreatureFamilyEntry> sCreatureFamilyStore(CreatureFamilyfmt);
@@ -294,8 +289,7 @@ void LoadDBCStores(const std::string& dataPath)
     LOAD_DBC(sChrRacesStore,                        "ChrRaces.dbc",                         "chrraces_dbc");
     LOAD_DBC(sCinematicCameraStore,                 "CinematicCamera.dbc",                  "cinematiccamera_dbc");
     LOAD_DBC(sCinematicSequencesStore,              "CinematicSequences.dbc",               "cinematicsequences_dbc");
-    // LOAD_DBC(sCreatureDisplayInfoStore,          "CreatureDisplayInfo.dbc",              "creaturedisplayinfo_dbc");
-    LOAD_DBC(sCreatureDisplayInfoStoreRaw,          "CreatureDisplayInfo.dbc",              "creaturedisplayinfo_dbc");
+    LOAD_DBC(sCreatureDisplayInfoStore,             "CreatureDisplayInfo.dbc",              "creaturedisplayinfo_dbc");
     LOAD_DBC(sCreatureDisplayInfoExtraStore,        "CreatureDisplayInfoExtra.dbc",         "creaturedisplayinfoextra_dbc");
     LOAD_DBC(sCreatureFamilyStore,                  "CreatureFamily.dbc",                   "creaturefamily_dbc");
     LOAD_DBC(sCreatureModelDataStore,               "CreatureModelData.dbc",                "creaturemodeldata_dbc");

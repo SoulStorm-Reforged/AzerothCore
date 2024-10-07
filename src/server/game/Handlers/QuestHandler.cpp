@@ -87,12 +87,6 @@ void WorldSession::HandleQuestgiverHelloOpcode(WorldPacket& recvData)
 
     LOG_DEBUG("network", "WORLD: Received CMSG_QUESTGIVER_HELLO npc {}", guid.ToString());
 
-#ifndef DISABLE_DRESSNPCS_CORESOUNDS
-    if (guid.IsAnyTypeCreature())
-        if (Creature* creature = _player->GetMap()->GetCreature(guid))
-            creature->SendMirrorSound(_player, 0);
-#endif
-
     Creature* creature = GetPlayer()->GetNPCIfCanInteractWith(guid, UNIT_NPC_FLAG_NONE);
     if (!creature)
     {

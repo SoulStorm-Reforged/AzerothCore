@@ -5435,7 +5435,7 @@ void AddSC_generic_spell_scripts()
     RegisterSpellScriptWithArgs(spell_gen_mount, "spell_invincible", 0, SPELL_INVINCIBLE_60, SPELL_INVINCIBLE_100, SPELL_INVINCIBLE_150, SPELL_INVINCIBLE_310, 0);
     RegisterSpellScriptWithArgs(spell_gen_mount, "spell_blazing_hippogryph", 0, 0, 0, SPELL_BLAZING_HIPPOGRYPH_150, SPELL_BLAZING_HIPPOGRYPH_280, 0);
     RegisterSpellScriptWithArgs(spell_gen_mount, "spell_celestial_steed", 0, SPELL_CELESTIAL_STEED_60, SPELL_CELESTIAL_STEED_100, SPELL_CELESTIAL_STEED_150, SPELL_CELESTIAL_STEED_280, SPELL_CELESTIAL_STEED_310);
-    RegisterSpellScriptWithArgs(spell_gen_mount, "spell_x53_touring_rocket", 0,     0,      0,      SPELL_X53_TOURING_ROCKET_150, SPELL_X53_TOURING_ROCKET_280, SPELL_X53_TOURING_ROCKET_310);
+    RegisterSpellScriptWithArgs(spell_gen_mount, "spell_x53_touring_rocket", 0, 0, 0, SPELL_X53_TOURING_ROCKET_150, SPELL_X53_TOURING_ROCKET_280, SPELL_X53_TOURING_ROCKET_310);
     RegisterSpellScriptWithArgs(spell_gen_mount, "spell_histoire_de_sergent", 0, 1356488, 2356488, 2356488, 2356488, 2356488);
     RegisterSpellScriptWithArgs(spell_gen_mount, "spell_alunira", 0, 1447213, 2447213, 3447213, 4447213, 4447213);
     RegisterSpellScriptWithArgs(spell_gen_mount, "spell_sabre_de_reve_du_soleil_couchant", 0, 1424479, 2424479, 2424479, 2424479, 2424479);

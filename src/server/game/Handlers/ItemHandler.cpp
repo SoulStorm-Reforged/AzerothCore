@@ -1031,12 +1031,6 @@ void WorldSession::HandleListInventoryOpcode(WorldPacket& recvData)
 
     LOG_DEBUG("network", "WORLD: Recvd CMSG_LIST_INVENTORY");
 
-#ifndef DISABLE_DRESSNPCS_CORESOUNDS
-    if (guid.IsAnyTypeCreature())
-        if (Creature* creature = _player->GetMap()->GetCreature(guid))
-            creature->SendMirrorSound(_player, 0);
-#endif
-
     SendListInventory(guid);
 }
 

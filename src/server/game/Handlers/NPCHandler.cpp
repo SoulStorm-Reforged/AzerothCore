@@ -49,12 +49,6 @@ void WorldSession::HandleTabardVendorActivateOpcode(WorldPacket& recvData)
     ObjectGuid guid;
     recvData >> guid;
 
-#ifndef DISABLE_DRESSNPCS_CORESOUNDS
-    if (guid.IsAnyTypeCreature())
-        if (Creature* creature = _player->GetMap()->GetCreature(guid))
-            creature->SendMirrorSound(_player, 0);
-#endif
-
     Creature* unit = GetPlayer()->GetNPCIfCanInteractWith(guid, UNIT_NPC_FLAG_TABARDDESIGNER);
     if (!unit)
     {
@@ -88,10 +82,6 @@ void WorldSession::HandleTrainerListOpcode(WorldPacket& recvData)
     ObjectGuid guid;
 
     recvData >> guid;
-
-/*#ifndef DISABLE_DRESSNPCS_CORESOUNDS
-    npc->SendMirrorSound(_player, 0);
-#endif*/
 
     SendTrainerList(guid);
 }
@@ -294,12 +284,6 @@ void WorldSession::HandleGossipHelloOpcode(WorldPacket& recvData)
         LOG_DEBUG("network", "WORLD: HandleGossipHelloOpcode - Unit ({}) not found or you can not interact with him.", guid.ToString());
         return;
     }
-
-#ifndef DISABLE_DRESSNPCS_CORESOUNDS
-    if (guid.IsAnyTypeCreature())
-        if (Creature* creature = _player->GetMap()->GetCreature(guid))
-            creature->SendMirrorSound(_player, 0);
-#endif
 
     // xinef: check if we have ANY npc flags
     if (unit->GetNpcFlags() == UNIT_NPC_FLAG_NONE)
