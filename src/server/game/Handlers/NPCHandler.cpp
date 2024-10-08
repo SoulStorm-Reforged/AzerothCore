@@ -99,7 +99,7 @@ void WorldSession::SendTrainerList(ObjectGuid guid, const std::string& strTitle,
     Creature* unit = GetPlayer()->GetNPCIfCanInteractWith(guid, UNIT_NPC_FLAG_TRAINER);
     if (!unit)
     {
-        LOG_ERROR("network", "WORLD: SendTrainerList - Unit ({}) not found or you can not interact with him.", guid.ToString());
+        LOG_DEBUG("network", "WORLD: SendTrainerList - Unit ({}) not found or you can not interact with him.", guid.ToString());
         return;
     }
 
@@ -119,7 +119,7 @@ void WorldSession::SendTrainerList(ObjectGuid guid, const std::string& strTitle,
     TrainerSpellData const* trainer_spells = trainerEntry ? sObjectMgr->GetNpcTrainerSpells(trainerEntry) : unit->GetTrainerSpells();
     if (!trainer_spells)
     {
-        LOG_ERROR("network", "WORLD: SendTrainerList - Training spells not found for creature ({}) - TrainerEntry ({})", guid.ToString(), trainerEntry);
+        LOG_DEBUG("network", "WORLD: SendTrainerList - Training spells not found for creature ({}) - TrainerEntry ({})", guid.ToString(), trainerEntry);
         return;
     }
 
