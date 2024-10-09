@@ -38,7 +38,7 @@
 
 #include "UpdateFields.h"
 
-class ElunaEventProcessor;
+class ForgeEventProcessor;
 
 enum TempSummonType
 {
@@ -632,7 +632,7 @@ public:
 
     std::string GetDebugInfo() const override;
 
-    ElunaEventProcessor* elunaEvents;
+    ForgeEventProcessor* forgeEvents;
 
 protected:
     std::string m_name;

@@ -15,15 +15,15 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SCRIPT_OBJECT_ELUNA_SCRIPT_H_
-#define SCRIPT_OBJECT_ELUNA_SCRIPT_H_
+#ifndef SCRIPT_OBJECT_FORGE_SCRIPT_H_
+#define SCRIPT_OBJECT_FORGE_SCRIPT_H_
 
 #include "ScriptObject.h"
 
-class ElunaScript : public ScriptObject
+class ForgeScript : public ScriptObject
 {
 protected:
-    ElunaScript(const char* name);
+    ForgeScript(const char* name);
 
 public:
     /**
